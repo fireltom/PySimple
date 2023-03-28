@@ -2,6 +2,7 @@
 import cv2
 from tkinter import Tk, Label, StringVar, Entry, Frame, Button, Menu
 from tkinter.filedialog import askopenfilename
+import sys
 import os
 
 
@@ -25,6 +26,7 @@ class Stencil:
         self.root.geometry('390x180')
         self.root.resizable(False, False)
         self.root.config(bg='#09446e')
+        self.root.iconbitmap(self.resource_path("sketchy.ico"))
 
         # * variables *
         self.load_path = StringVar()  # image source
@@ -150,6 +152,12 @@ class Stencil:
                     return True  # inform 'convert_image' method
         else:
             self.save_path.set('')  # no valid input, empty label
+
+    @staticmethod
+    def resource_path(relative_path):
+        # ** absolute path to resource, works for dev and for PyInstaller **
+        base_path = getattr(sys, '_MEIPASS', os.path.dirname(os.path.abspath(__file__)))
+        return os.path.join(base_path, relative_path)
 
     def run(self):
         # ** keep window visible **

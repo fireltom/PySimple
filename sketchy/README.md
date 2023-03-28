@@ -17,13 +17,13 @@ You can copy paste my markdown photo insert as following:
 
 ## ✨ Description
 <!--Remove the below lines and add yours -->
-A Python simple "image to stencil converter".
-You need custom drawing stencils for students, your kids or yourself?
+A Python simple "image to stencil converter".  
+You need custom drawing stencils for students, your kids or yourself?  
 Then this is for you!
 
 ## ⚙️ Languages or Frameworks Used
 <!--Remove the below lines and add yours -->
-Simple gui with Python, using Opencv & Tkinter modules to convert an image to stencil.
+Simple gui with Python, using Opencv & Tkinter modules to convert an image to stencil.  
 User can press "Load" & "Convert" :buttons or 'Alt + c' & 'Alt + c' :keys for ease and convenience.
 
 ## 🌟 How to run
