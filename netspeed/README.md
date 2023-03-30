@@ -24,7 +24,7 @@ Then this is for you!
 ## ⚙️ Languages or Frameworks Used
 <!--Remove the below lines and add yours -->
 Simple gui with Python, using speedtest-cli & Tkinter modules to test your internet connection.  
-User can press "Test":button or 'Alt + t':keys for ease and convenience.  
+User can press "Test" :button or 'Alt + t' :keys for ease and convenience.  
 Log supported
 
 ## 🌟 How to run

@@ -12,7 +12,7 @@ import os
 * Do you ever find yourself bored with online speed meters and bad advertising?
 * Then this is for you!
 * Simple gui with Python, using speedtest-cli & Tkinter modules to test your internet connection.
-* User can press "Test":button or 'Alt + t':keys for ease and convenience.
+* User can press "Test" :button or 'Alt + t' :keys for ease and convenience.
 * Log supported 
 """
 

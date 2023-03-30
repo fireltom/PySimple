@@ -12,7 +12,7 @@ import os
 * You need custom drawing stencils for students, your kids or yourself?
 * Then this is for you!
 * Simple gui with Python, using opencv & Tkinter modules to convert an image to stencil.
-* User can press "Load" & "Convert" :buttons or 'Alt + c' & 'Alt + c' :keys for ease and convenience. 
+* User can press "Load" & "Convert" :buttons or 'Alt + l' & 'Alt + c' :keys for ease and convenience. 
 """
 
 

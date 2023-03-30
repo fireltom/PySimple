@@ -24,7 +24,7 @@ Then this is for you!
 ## ⚙️ Languages or Frameworks Used
 <!--Remove the below lines and add yours -->
 Simple gui with Python, using opencv & Tkinter modules to convert an image to text.  
-User can press "Load" & "Convert" :buttons or 'Alt + c' & 'Alt + c' :keys for ease and convenience.
+User can press "Load" & "Convert" :buttons or 'Alt + l' & 'Alt + c' :keys for ease and convenience.
 
 ## 🌟 How to run
 Open project folder and type: cmd into the folder address bar.  
