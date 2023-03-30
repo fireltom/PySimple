@@ -126,7 +126,7 @@ class Stencil:
 
     def pressed(self, letter):
         # ** shortcut effect **
-        self.buttons_[letter][0].config(relief='sunken', state='active')
+        self.buttons_[letter][0].config(relief='sunken', state='disabled')
         self.buttons_[letter][0].after(150, lambda: self.buttons_[letter][0].config(relief='raised', state='normal'))
 
     @staticmethod

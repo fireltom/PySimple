@@ -90,7 +90,7 @@ class Dice20:
     def roll(self, event=None):
         # <r>:shortcut key and button animation
         if event:
-            self.button.config(relief='sunken', state='active')
+            self.button.config(relief='sunken', state='disabled')
             self.button.after(150, lambda: self.button.config(relief='raised', state='normal'))
         # dice outcome
         face = choice(range(1, 20+1))

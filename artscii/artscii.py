@@ -24,7 +24,7 @@ class Stencil:
         self.root = Tk()  # main window
         self.root.title("Artscii")
         self.root.geometry('390x180')
-        # self.root.resizable(False, False)
+        self.root.resizable(False, False)
         self.root.config(bg='#205062')
         self.root.iconbitmap(self.resource_path("artscii.ico"))
         # self.root.attributes('-transparentcolor', '#205062')  # test
@@ -149,7 +149,7 @@ class Stencil:
 
     def pressed(self, letter):
         # ** shortcut effect **
-        self.buttons_[letter][0].config(relief='sunken', state='active')
+        self.buttons_[letter][0].config(relief='sunken', state='disabled')
         self.buttons_[letter][0].after(150, lambda: self.buttons_[letter][0].config(relief='raised', state='normal'))
 
     @staticmethod
