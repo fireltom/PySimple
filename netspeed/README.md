@@ -25,7 +25,7 @@ Then this is for you!
 <!--Remove the below lines and add yours -->
 Simple gui with Python, using speedtest-cli & Tkinter modules to test your internet connection.  
 User can press "Test" :button or 'Alt + t' :keys for ease and convenience.  
-Log supported
+Log supported!
 
 ## 🌟 How to run
 Open project folder and type: cmd into the folder address bar.  

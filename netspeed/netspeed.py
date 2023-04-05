@@ -97,7 +97,7 @@ class Netspeed:
         self.path = os.path.join(path, file)
         # print(self.path)  # test
         try:  # check previous checkbox state
-            with open(self.path, "r") as f:
+            with open(self.path, 'r') as f:
                 line1 = f.readline()
                 if line1 == "1\n":
                     self.checkbox.set(1)
@@ -111,27 +111,27 @@ class Netspeed:
             data = ''
             check = False
             try:  # check for logging file
-                with open(self.path, "r") as f:
+                with open(self.path, 'r') as f:
                     data = f.read()
                     if data[0:2] != "1\n":
                         check = True
             except FileNotFoundError:
                 check = True
             if check:  # create & activate log
-                with open(self.path, "w") as f:
+                with open(self.path, 'w') as f:
                     f.write("1\n" + data)
         else:  # not ticked
             data = ''
             check = False
             try:   # check for active log
-                with open(self.path, "r") as f:
+                with open(self.path, 'r') as f:
                     data = f.read()
                     if data[0:2] == "1\n":
                         check = True
             except FileNotFoundError:
                 pass
             if check:  # deactivate log
-                with open(self.path, "w") as f:
+                with open(self.path, 'w') as f:
                     modified = data[2:]
                     f.write(modified)
 
@@ -152,7 +152,7 @@ class Netspeed:
         download = self.download.get()
         upload = self.upload.get()
         log = f'{download} / {upload} - {timestamp.strftime("%Y-%m-%d %H:%M:%S")}\n'
-        with open(self.path, "a") as f:
+        with open(self.path, 'a') as f:
             f.write(log)
 
     def pressed(self, letter):
@@ -165,7 +165,7 @@ class Netspeed:
         # ** right click menu **
         mouse_menu = Menu(None, tearoff=0, takefocus=0)
         # * menu options *
-        for option in ['Cut', 'Copy', 'Paste']:
+        for option in ["Cut", "Copy", "Paste"]:
             mouse_menu.add_command(label=option, command=lambda cmd=option: event.widget.event_generate(f'<<{cmd}>>'))
         mouse_menu.tk_popup(event.x_root, event.y_root, entry='0')
 
@@ -185,5 +185,5 @@ def main():
     speed_meter.run()  # keep NetSpeed window 'alive'
 
 
-if __name__ == "__main__":
+if __name__ == '__main__':
     main()  # executed only from netspeed.py
