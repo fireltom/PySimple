@@ -17,12 +17,12 @@ You can copy paste my markdown photo insert as following:
 
 ## ✨ Description
 <!--Remove the below lines and add yours -->
-A Python simple notification reminder.
+A Python simple notification reminder.  
 Balloon tray reminder that will help you not to miss any plans, tasks and events from your daily life.
 
 ## ⚙️ Languages or Frameworks Used
 <!--Remove the below lines and add yours -->
-Simple gui with Python, using plyer, infi.systray & Tkinter modules.
+Simple gui with Python, using plyer, infi.systray & Tkinter modules.  
 User can press "Activate" / "Deactivate" :button or 'Alt + a' :key for ease and convenience.
 
 ## 🌟 How to run
