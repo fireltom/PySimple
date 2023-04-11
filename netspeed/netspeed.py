@@ -5,7 +5,6 @@ from tkinter import Tk, PhotoImage, Label, Entry, StringVar, Button, Checkbutton
 import sys
 import os
 
-
 """
 ** NetSpeed **
 * A Python, simple internet speed meter.
@@ -67,10 +66,13 @@ class Netspeed:
                                                                            state='disabled', bg='#040404'),
                                                    self.button_test.after(100, self.speed_check)])
         self.button_test.pack(pady=16)
-        self.buttonbox_log = Checkbutton(self.root, text="L\u0331og", font='Arial 8 bold', fg='orange', bg='#040404',
+        self.label6 = Label(self.root, bg='#125d9a', highlightthickness=0, bd=0)
+        self.label6.pack(anchor='e', padx=16)
+        self.buttonbox_log = Checkbutton(self.label6, text="L\u0331og", font='Arial 8 bold', fg='orange', bg='#040404',
                                          selectcolor='#040404', activeforeground='orange', activebackground='#040404',
-                                         variable=self.checkbox, onvalue=1, offvalue=0, command=self.checkbox_state)
-        self.buttonbox_log.pack(anchor='w', padx=4)
+                                         highlightthickness=0, bd=0, variable=self.checkbox, onvalue=1, offvalue=0,
+                                         command=self.checkbox_state)
+        self.buttonbox_log.pack(padx=1, pady=1)
 
         # * buttons dictionary *
         self.buttons_ = {
@@ -157,7 +159,7 @@ class Netspeed:
 
     def pressed(self, letter):
         # ** shortcut effect **
-        self.buttons_[letter][0].config(relief='sunken', state='disabled')
+        self.buttons_[letter][0].config(relief='sunken', state='active')
         self.buttons_[letter][0].after(150, lambda: self.buttons_[letter][0].config(relief='raised', state='normal'))
 
     @staticmethod

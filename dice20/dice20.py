@@ -66,7 +66,7 @@ class Dice20:
         self.windowSwordButton = self.canvasSword.create_window(183, 3, anchor='nw', window=self.button)
 
         # shortcut key label properties
-        self.shortcut_label = Label(self.root, text='', fg='orange', bg='#232323', font='times 9', anchor='center')
+        self.shortcut_label = Label(self.root, text='', fg='#a6acf9', bg='#232323', font='times 9', anchor='center')
 
         # bind keyboard shortcut
         self.root.bind('<r>', self.roll)
@@ -107,7 +107,7 @@ class Dice20:
             if self.shortcut_label['fg'] in '#1d6fc4red':
                 pass
             else:
-                self.shortcut_label.config(text="Shortcut: R")
+                self.shortcut_label.config(text="github.com/fireltom/PySimple             Shortcut: R")
                 # clear shortcut key display
                 self.shortcut_label.after(3000, lambda: self.shortcut_label.config(text=''))
             self.shortcut_label.pack(fill='x', side='top')

@@ -41,10 +41,10 @@ class ForgetNot:
         self.clock = 0
         self.clockHour = 0
         self.clockMinutes = 0
-        self.counter = 86341  # guard value (23h + 59m + 1 min)
-        self.trayOption = StringVar()
-        self.trayOption = "Activate"  # dynamic option "Activate/Deactivate" from sys tray
+        self.counter = 86341  # sec, guard value (23h + 59m + 1 sec)
         self.jsonCheck = True
+        self.trayActivate = (("Show Window", None, self.show_root), ("Activate", None, self.tray_option))  # tray
+        self.trayDeactivate = (("Show Window", None, self.show_root), ("Deactivate", None, self.tray_option))  # options
 
         # * canvas, entries, text, button & tray *
         self.canvas_bg = Canvas(self.root, bg='black')
@@ -73,16 +73,18 @@ class ForgetNot:
         # *
         self.button_activate = Button(self.canvas_bg, text="A\u0331ctivate", font='Arial 10 bold', width=9, fg='orange',
                                       bg="#040404", activebackground='#125d9a', bd=2,
-                                      command=lambda: [[self.button_activate.config(text="D\u0331eactivate", fg='red'),
+                                      command=lambda: [[self.button_activate.config(text="Dea\u0331ctivate", fg='red'),
+                                                        self.systray.update(menu_options=self.trayDeactivate),
                                                         self.button_activate.after(150, self.balloon_note)]
                                                        if self.button_activate['fg'] == 'orange'
-                                                       else self.button_activate.config(text="A\u0331ctivate",
-                                                       fg='orange')])  # lambda, rollover: Activate <--> Deactivate
+                                                       else [self.button_activate.config(text="A\u0331ctivate",
+                                                             fg='orange'),
+                                                             self.systray.update(menu_options=self.trayActivate)]]
+                                      )  # lambda, rollover: Activate <--> Deactivate
 
         self.button_activate.pack(side='bottom', anchor='e', padx=16, pady=16)
         # *
-        self.trayMenu = (("Show Window", None, self.show_root), (self.trayOption, None, self.tray_option))
-        self.systray = SysTrayIcon(self.ico, "ForgetNot", self.trayMenu, on_quit=self.quit_root)
+        self.systray = SysTrayIcon(self.ico, "ForgetNot", self.trayActivate, on_quit=self.quit_root)
         # *
         self.read_notification()  # check user previous inputs
 
@@ -150,15 +152,15 @@ class ForgetNot:
             pass
 
     def balloon_note(self):
-        # ** start notifications 'reminder' **
+        # ** start notification 'reminder' **
         check = True
         if self.title_input(ret=check) and self.notes_input(ret=check) and self.hour_input(ret=check)\
            and self.minutes_input(ret=check):  # check integrity from all entries
             hour = int(self.hour.get())
             minutes = int(self.minutes.get())
             if not self.clock:
-                if not hour and minutes < 10:
-                    minutes = 10
+                if not hour + minutes:
+                    minutes = 1
                 self.hour.set(str(hour).zfill(2))
                 self.minutes.set(str(minutes).zfill(2))
                 self.clock = 60 * 60 * hour + 60 * minutes
@@ -174,11 +176,13 @@ class ForgetNot:
             if self.clock == self.counter:
                 self.counter = 0
                 notification.notify(title=self.entry_title.get(), message=self.text_notes.get(1.0, 'end-1c'),
-                                    app_name=self.root.title(), timeout=8,
+                                    app_name=self.root.title(), timeout=10,
                                     app_icon=self.resource_path("forgetnot.ico"))  # on Windows, app_icon has to be .ico
             if self.clock:
                 self.counter += 60
                 return self.root.after(60*1000, self.balloon_note)
+        else:
+            self.pressed("a")  # empty hour / minutes entry
 
     def read_notification(self):
         # ** check for json settings **
@@ -236,21 +240,17 @@ class ForgetNot:
 
     def tray_option(self, systray):
         # ** dynamic tray option Activate/Deactivate **
-        self.pressed(letter='a'),
+        self.pressed("a"),
         self.button_state()
-        win32_adapter.DestroyWindow(systray._hwnd)
-        self.trayMenu = (("Show Window", None, self.show_root), (self.trayOption, None, self.tray_option))
-        self.systray = SysTrayIcon(self.ico, "ForgetNot", self.trayMenu, on_quit=self.quit_root)
-        self.systray.start()
 
     def pressed(self, letter):
         # ** shortcut effect **
         if self.buttons_[letter][0]['fg'] == 'orange':
             self.buttons_[letter][0].config(text="Dea\u0331ctivate", fg='red')
-            self.trayOption = "Deactivate"
+            self.systray.update(menu_options=self.trayDeactivate)  # pull request, github.com/MagTun/infi.systray
         else:
             self.buttons_[letter][0].config(text="A\u0331ctivate", fg='orange')
-            self.trayOption = "Activate"
+            self.systray.update(menu_options=self.trayActivate)  # github.com/MagTun/infi.systray/tree/develop/src
         self.buttons_[letter][0].config(relief='sunken', state='active')
         self.buttons_[letter][0].after(150, lambda: self.buttons_[letter][0].config(relief='raised', state='normal'))
 
