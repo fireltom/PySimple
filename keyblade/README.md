@@ -25,9 +25,8 @@ Only for educational purpose!
 <!--Remove the below lines and add yours -->
 Simple tray app with Python, using pynput & infi.systray modules.  
 User can press -> "Activate",  
-                  "Deactivate": <"Deactivate" + Esc + Esc>,  
-                  "Quit": if activated: <"Deactivate" + Esc + Esc + "Quit">  
-                          else: just "Quit"  
+                  "Deactivate": <"Deactivate" + Esc>,  
+                  "Quit": "Quit"  
 options from taskbar icon.
 
 ## 🌟 How to run
