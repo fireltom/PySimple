@@ -23,7 +23,7 @@ class Stencil:
         # * window properties *
         self.root = Tk()  # main window
         self.root.title("Sketchy")
-        self.root.geometry('390x180')
+        self.root.geometry('390x194')
         self.root.resizable(False, False)
         self.root.config(bg='#09446e')
         self.root.iconbitmap(self.resource_path("sketchy.ico"))
@@ -42,10 +42,10 @@ class Stencil:
         self.frame2 = Frame(self.root, bg='#09446e')
         self.frame2.pack(padx=2, pady=2)
         self.entry = Entry(self.frame2, textvariable=self.load_path, font='Arial 10 bold', width=42, fg='black',
-                           bg='#a6acff', bd=2)
+                           bg='#a6acf9', bd=2)
         self.entry.pack(side='left', padx=2, pady=2)
         self.button_load = Button(self.frame2, text="L\u0331oad", font='Arial 10 bold', width=8, fg='orange',
-                                  bg="#121212", activebackground='#125d9a', bd=2, command=self.load_image)
+                                  bg='#121212', activebackground='#125d9a', bd=2, command=self.load_image)
         self.button_load.pack(padx=2, pady=2)
         # *
         self.frame3 = Frame(self.root, bg='#09446e')
@@ -56,15 +56,19 @@ class Stencil:
         self.frame4 = Frame(self.root, bg='#09446e')
         self.frame4.pack(padx=2, pady=2)
         self.label3 = Label(self.frame4, textvariable=self.save_path, anchor='e', font='Arial 10 bold', width=37,
-                            fg='black', bg='#a6acff', relief='solid', bd=2)
+                            fg='black', bg='#a6acf9', relief='solid', bd=2)
         self.label3.pack(side='left', padx=2, pady=2)
-        self.label4 = Label(self.frame4, text="Ready", font='Arial 10 bold', fg='#a6acff',
+        self.label4 = Label(self.frame4, text="Ready", font='Arial 10 bold', fg='#a6acf9',
                             bg='#121212', width=8, relief='solid', bd=2)
         self.label4.pack(padx=2, pady=2)
         # *
         self.button_convert = Button(self.root, text="C\u0331onvert", font='Arial 10 bold', width=8, fg='orange',
-                                     bg="#121212", activebackground='#125d9a', bd=2, command=self.convert_image)
+                                     bg='#121212', activebackground='#125d9a', bd=2, command=self.convert_image)
         self.button_convert.pack(padx=2, pady=8)
+        # *
+        self.label5 = Label(self.root, text="github.com/fireltom/PySimple", font='Arial 9 bold',
+                            fg='#a6acf9', bg='#09446e')
+        self.label5.pack()
 
         # * buttons dictionary *
         self.buttons_ = {
@@ -144,7 +148,7 @@ class Stencil:
         isFile = os.path.isfile(self.entry.get())
         if isFile:
             if not oldFile:
-                self.label4.config(text="Ready", fg='#a6acff')
+                self.label4.config(text="Ready", fg='#a6acf9')
                 imageDir = os.path.dirname(self.entry.get())
                 imageName = os.path.basename(self.entry.get())
                 self.save_path.set(imageDir + "/sketch_" + imageName)

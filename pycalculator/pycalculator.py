@@ -1,4 +1,4 @@
-# import all necessary modules
+﻿# import all necessary modules
 from tkinter import Tk, Frame, Label, Button
 import sys
 import os
@@ -6,7 +6,7 @@ import os
 
 """
 ** pyCalculator **
-* A Python simple calculator for change.
+* A Python simple calculator for a change.
 * You are bored and you want to try something new?
 * Then this is for you!
 * Simple gui using Python and Tkinter module to represent a virtual calculator.
@@ -21,7 +21,7 @@ class Calculator:
         # * window properties *
         self.root = Tk()  # main window
         self.root.title("pyCalculator")  # window title
-        self.root.geometry('363x510')
+        self.root.geometry('363x522')
         self.root.config(bg='#09446e')  # window color, samples: '#7067fd', '#09446e'
         self.root.resizable(False, False)
         self.ico = self.resource_path("pycalculator.ico")
@@ -127,6 +127,10 @@ class Calculator:
                             fg='orange', activebackground='#125d9a', command=self.solve)
         self.btnEq.grid(row=7, column=4)
 
+        self.label2 = Label(self.root, text="github.com/fireltom/PySimple", font='Arial 9 bold', bg='#09446e',
+                            fg='#a6acf9')
+        self.label2.grid(columnspan=5)
+
         # * buttons dictionary *
         self.buttons = {
                         "1": self.btn1,
@@ -192,7 +196,7 @@ class Calculator:
             result = True
         if result or self.displayValue == "Invalid" or self.displayValue == "0" and str(value) in "0123456789(√":
             self.displayValue = str(value)
-        elif str(value) in "*/." and self.displayValue[-1] in "*/.":  # duplicate operators protect
+        elif str(value) in "*/." and self.displayValue[-1] in "*/.":  # duplicate operator protect
             pass
         elif '\n' in self.displayValue:  # new calculation
             self.displayValue = str(self.result) + str(value)
@@ -204,7 +208,7 @@ class Calculator:
         # ** clear screen **
         self.displayValue = "0"
         self.label.config(text=self.displayValue)
-        if event:  # shortcut 'effect'
+        if event:  # shortcut effect
             self.btnAC.config(relief='sunken', state='active')
             self.btnAC.after(150, lambda: self.btnAC.config(relief='raised', state='normal'))
 
@@ -212,6 +216,7 @@ class Calculator:
         # ** calculation result **
         result = self.displayValue
         if self.squareRoot:
+            self.squareRoot = False
             result = result.replace(":√", "**(1/2)")
         try:
             self.result = eval(result)
@@ -227,7 +232,7 @@ class Calculator:
         except Exception:
             self.displayValue = "Invalid"
         self.label.config(text=self.displayValue)
-        if event:  # shortcut 'effect'
+        if event:  # shortcut effect
             self.btnEq.config(relief='sunken', state='active')
             self.btnEq.after(150, lambda: self.btnEq.config(relief='raised', state='normal'))
 
@@ -246,7 +251,7 @@ class Calculator:
                 self.displayValue = self.displayValue[start+1:]
             self.displayValue = self.displayValue[:-1]
         self.label.config(text=self.displayValue)
-        if event:  # shortcut 'effect'
+        if event:  # shortcut effect
             self.btnRet.config(relief='sunken', state='active')
             self.btnRet.after(150, lambda: self.btnRet.config(relief='raised', state='normal'))
 
@@ -276,7 +281,7 @@ class Calculator:
                 per = f'{whole} / {part} * 100'
             self.displayValue = per
             self.solve(per=True)
-        if event:  # shortcut 'effect'
+        if event:  # shortcut effect
             self.btnPer.config(relief='sunken', state='active')
             self.btnPer.after(150, lambda: self.btnPer.config(relief='raised', state='normal'))
 
@@ -284,12 +289,12 @@ class Calculator:
         # ** copy calculation **
         self.root.clipboard_clear()
         self.root.clipboard_append(self.displayValue)
-        if event:  # shortcut 'effect'
+        if event:  # shortcut effect
             self.btnCp.config(relief='sunken', state='active')
             self.btnCp.after(150, lambda: self.btnCp.config(relief='raised', state='normal'))
 
     def pressed(self, index):
-        # ** rest keyboard shortcuts 'effect'  **
+        # ** rest keyboard shortcuts effect  **
         self.buttons[index].config(relief='sunken', state='active')
         self.buttons[index].after(150, lambda: self.buttons[index].config(relief='raised', state='normal'))
 

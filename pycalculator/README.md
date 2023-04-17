@@ -17,7 +17,7 @@ You can copy paste my markdown photo insert as following:
 
 ## ✨ Description
 <!--Remove the below lines and add yours -->
-A Python simple calculator for change.  
+A Python simple calculator for a change.  
 You are bored and you want to try something new?  
 Then this is for you!
 
