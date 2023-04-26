@@ -24,7 +24,7 @@ Then this is for you!
 ## ⚙️ Languages or Frameworks Used
 <!--Remove the below lines and add yours -->
 Simple gui using Python and Tkinter module to represent a virtual calculator.  
-User can press buttons or try numpad shortcuts.
+User can press buttons or try numpad shortcuts for ease and convenience.
 
 ## 🌟 How to run
 Open project folder and type: cmd into the folder address bar.  
