@@ -130,12 +130,9 @@ class IlovePdf:
                     path = os.path.join(self.nwd, name)
                     new_pdf.save(path)
                 self.button_convert.config(text="Done!", fg='#b94323')
-                self.action = 0
             except Exception:
                 self.button_convert.config(text="Error!", fg='red')
-                self.action = 0
-                if self.nwd:
-                    rmtree(self.nwd)  # on error, delete any output
+                rmtree(self.nwd, ignore_errors=True)  # on error, delete any output
         elif self.action == 2:  # merge
             self.action = 0
             cwd = self.entry.get()
@@ -153,12 +150,9 @@ class IlovePdf:
                 new_pdf.save(path)
                 self.pdf_list.clear()
                 self.button_convert.config(text="Done!", fg='#3697f5')
-                self.action = 0
             except Exception:
                 self.button_convert.config(text="Error!", fg='red')
-                self.action = 0
-                if self.nwd:
-                    rmtree(self.nwd)
+                rmtree(self.nwd, ignore_errors=True)
 
     def check_entry(self):
         # ** check for valid entry **
@@ -178,7 +172,7 @@ class IlovePdf:
                 self.button_convert.config(text="i\u0330Split", fg='#b94323')
                 self.action = 1
             else:
-                self.button_convert.config(text="Done!", fg='#b94323')
+                self.button_convert.config(text="Already!", fg='#b94323')
         elif isDir:  # check for merging
             dir_list = os.listdir(entry)
             self.pdf_list = fnmatch.filter(dir_list, '*.pdf')
@@ -195,7 +189,7 @@ class IlovePdf:
                     self.button_convert.config(text="i\u0330Merge", fg='#3697f5')
                     self.action = 2
                 else:
-                    self.button_convert.config(text="Done!", fg='#3697f5')
+                    self.button_convert.config(text="Already!", fg='#3697f5')
             else:
                 self.button_convert.config(text="Empty..", fg='#3697f5')
         else:
