@@ -6,7 +6,7 @@
 # Pdf2Docx
 
 <p align="center">
-<img src="https://github.com/fireltom/PySimple/blob/main/ilovepdf/demo/pdf2doc.jpg">
+<img src="https://github.com/fireltom/PySimple/blob/main/pdf2docx/demo/pdf2doc.jpg">
 
 <!--A simple photo to illustrate the project :) 
 
