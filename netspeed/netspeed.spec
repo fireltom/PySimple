@@ -7,7 +7,7 @@ block_cipher = None
 a = Analysis(
     ['netspeed.py'],
     pathex=[],
-    binaries=[('netspeed.ico', '.'), ('bg.png', '.')],
+    binaries=[('netspeed.ico', '.'), ('netspeedbg.png', '.')],
     datas=[],
     hiddenimports=[],
     hookspath=[],

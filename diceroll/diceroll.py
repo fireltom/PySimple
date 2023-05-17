@@ -30,7 +30,7 @@ class DiceRoll:
         self.bg = PhotoImage(file=self.resource_path("dicerollbg.png"))  # background image
 
         # window button style
-        self.button_roll = Button(self.root, text="\u2681    \n    \u2685", font='Arial 110 bold', bg='#13a6f9',
+        self.button_roll = Button(self.root, text=f'\u2681{" "*4}\n{" "*4}\u2685', font='Arial 110 bold', bg='#13a6f9',
                                   fg='black', highlightthickness=0, bd=0, image=self.bg, compound='center',
                                   activeforeground='black', command=self.roll)
         self.button_roll.pack()
@@ -51,7 +51,7 @@ class DiceRoll:
     def roll(self):
         # ** dice roll picker **
         dice = ['\u2681', '\u2681', '\u2682', '\u2683', '\u2684', '\u2685']  # dice six 'faces'
-        self.button_roll.config(text=f'{random.choice(dice)}    \n    {random.choice(dice)}')  # shuffle dice dots
+        self.button_roll.config(text=f'{random.choice(dice)}{" "*4}\n{" "*4}{random.choice(dice)}')  # shuffle dice dots
 
     def pressed(self, letter):
         # ** shortcut effect **

@@ -26,7 +26,7 @@ class Netspeed:
         self.root.geometry('390x180')
         self.root.resizable(False, False)
         self.root.config(bg='#040404')
-        self.bg = PhotoImage(file=self.resource_path("bg.png"))  # background image
+        self.bg = PhotoImage(file=self.resource_path("netspeedbg.png"))  # background image
         self.root.iconbitmap(self.resource_path("netspeed.ico"))
 
         # * variables *
@@ -183,8 +183,9 @@ class Netspeed:
 
 
 def main():
+    # ** Netspeed instance **
     speed_meter = Netspeed()
-    speed_meter.run()  # keep NetSpeed window 'alive'
+    speed_meter.run()  # start instance
 
 
 if __name__ == '__main__':

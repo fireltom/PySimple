@@ -47,8 +47,8 @@ class Pdf2Doc:
         self.canvas_bg.pack()
         self.canvas_bg.create_image(0, 0, anchor='nw', image=self.bg)
         # *
-        self.label = Label(self.canvas_bg, text='', bg='black', highlightthickness=0, bd=0)
-        self.label.pack(pady=10, anchor='w')
+        self.label = Label(self.canvas_bg, text='', bg='#152f54', highlightthickness=0, bd=0)
+        self.label.pack(padx=8, pady=10, anchor='w')
         self.canvas_bg.create_text(186, 25, text="~ Pdf2Docx ~", fill='#6aa6f9', font='Arial 13 bold')
         self.entry = Entry(self.canvas_bg, textvariable=self.path, font='Arial 12 bold', width=40, fg='black',
                            bg='#a6a6f9', bd=2)
@@ -70,8 +70,8 @@ class Pdf2Doc:
                                      bg='#040404', activebackground='#125d9a', bd=2, command=self.convert_input)
         self.button_convert.pack(pady=8)
         # *
-        self.label2 = Label(self.canvas_bg, text='', bg='black', highlightthickness=0, bd=0)
-        self.label2.pack(anchor='w')
+        self.label2 = Label(self.canvas_bg, text='', bg='#262143', highlightthickness=0, bd=0)
+        self.label2.pack(padx=8, anchor='w')
         self.canvas_bg.create_text(194, 196, text="github.com/fireltom/PySimple", fill='#9a9af9', font='Arial 8 bold')
 
         # * buttons dictionary *
